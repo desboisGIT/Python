@@ -8,14 +8,14 @@ pygame.init()
 width, height = 1600, 400
 surface = pygame.display.set_mode((width, height))
 
-color = (255, 0, 0)
+color = (0, 0, 0)
 
 running = True
 
 towers = [random.randint(0, 200) for i in range(1600)]
 
 def tri_rapide(liste, left, right):
-    time.sleep(0.005)
+    #time.sleep(0.005)
     if left < right:
         pivot_index = partition(liste, left, right)
         tri_rapide(liste, left, pivot_index - 1)
@@ -36,8 +36,8 @@ def partition(liste, left, right):
     return index + 1
 
 def draw_towers(tower_list):
-    pygame.draw.rect(surface, (0, 0, 0), pygame.Rect(0, 0, width, height))
-    for x, tower in enumerate(tower_list):
+    pygame.draw.rect(surface, (255, 0, 0), pygame.Rect(0, 0, width, height))
+    for x, tower in enumerate(tower_list[::-1]):
         pygame.draw.rect(surface, color, pygame.Rect(x * width / len(tower_list), 0, width / len(tower_list), tower))
     pygame.display.flip()
 
